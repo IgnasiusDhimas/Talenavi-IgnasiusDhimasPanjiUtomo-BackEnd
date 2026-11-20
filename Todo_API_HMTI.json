@@ -1,0 +1,95 @@
+{
+  "info": {
+    "name": "Todo List Laravel API - HMTI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Create Todo List (POST)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Accept", "value": "application/json" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Persiapan Konsumsi & Banner LDKM HMTI\",\n  \"assignee\": \"Dhimas\",\n  \"due_date\": \"2026-12-28\",\n  \"time_tracked\": 2,\n  \"priority\": \"medium\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/todos",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "8000",
+          "path": ["api", "todos"]
+        }
+      }
+    },
+    {
+      "name": "2A. Export Excel - Semua Data (Tanpa Filter)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/todos/report",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "8000",
+          "path": ["api", "todos", "report"]
+        }
+      }
+    },
+    {
+      "name": "2B. Export Excel - Filter Title & Assignee",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/todos/report?title=HMTI&assignee=Dhimas,Toto",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "8000",
+          "path": ["api", "todos", "report"],
+          "query": [
+            { "key": "title", "value": "HMTI" },
+            { "key": "assignee", "value": "Dhimas,Toto" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "2C. Export Excel - Filter Range Date & Time",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/todos/report?start=2026-12-01&end=2026-12-20&min=2&max=4",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "8000",
+          "path": ["api", "todos", "report"],
+          "query": [
+            { "key": "start", "value": "2026-12-01" },
+            { "key": "end", "value": "2026-12-20" },
+            { "key": "min", "value": "2" },
+            { "key": "max", "value": "4" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "2D. Export Excel - Filter Status & Priority",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/todos/report?status=pending,in_progress&priority=medium,high",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "8000",
+          "path": ["api", "todos", "report"],
+          "query": [
+            { "key": "status", "value": "pending,in_progress" },
+            { "key": "priority", "value": "medium,high" }
+          ]
+        }
+      }
+    }
+  ]
+}
